@@ -48,7 +48,8 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/find")
     public String find(int cc){
-       System.out.priontln("徐鑫辉");
+       System.out.println("徐鑫辉");
+        System.out.println("在此提交");
         return "ok";
     }
 }
