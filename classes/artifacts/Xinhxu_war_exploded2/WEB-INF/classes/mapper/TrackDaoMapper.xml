@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xuxinhui.dao.TrackDao">
+
+	<select id="find" resultType="com.xuxinhui.entity.Track">
+		select id,version,ip from track where ip=#{ip};
+	</select>
+
+	<!--<insert id="add">
+	    insert into track (create_date,vserion,ip,country,region,city,county,isp,country_id,area_id,region_id,city_id,county_id,isp_id) values(sysdate(),1,#{vserion},#{ip},#{country},#{region},#{city,#{county},#{isp},#{country_id},#{area_id},#{region_id},#{city_id},#{county_id},#{isp_id})
+	</insert>-->
+		<insert id="add">
+			insert into track (create_date,version,ip)values (#{createDate},#{version},#{ip})
+		</insert>
+
+	<update id="update">
+		update track
+		<trim prefix="set" suffixOverrides=",">
+			<if test="track.version!=null">
+				version=#{track.version},
+			</if>
+			modify_date=#{track.modifyDate},
+		</trim>
+		where id=#{track.id}
+	</update>
+</mapper>
